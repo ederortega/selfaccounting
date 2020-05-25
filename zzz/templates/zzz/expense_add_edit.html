@@ -1,0 +1,46 @@
+{% extends 'zzz/base.html' %}
+{% block title %}{% if update %}Edit{% else %}Add{% endif %} Expense Record {% endblock title %}
+{% block main-content %}
+    <div class="page-title">
+        <div class="title_left">
+            <h3>
+                {% if update %}Update a{% else %}Add a new{% endif %} Expense Record
+            </h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-4">
+        <!-- FORMULARIO -->
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Expense Record Form</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form action="." method="post" id="demo-form">{% csrf_token %}
+                        {{ form.category.label_tag }}
+                        {{ form.category }}
+                        {{ form.category.errors }}
+                        
+                        {{ form.date.label_tag }}
+                        {{ form.date }}
+                        {{ form.date.errors }}
+
+                        {{ form.amount.label_tag }}
+                        {{ form.amount }}
+                        {{ form.amount.errors }}
+                        <br />
+                        <input class="btn btn-primary" type="submit" value="{% if update %}Update{% else %}Add{% endif %}">
+                    </form>
+                    {% include "zzz/messages.html" %}
+                </div>
+            </div>
+        <!-- -->
+        </div>
+    </div>
+{% endblock main-content %}
