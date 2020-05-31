@@ -24,6 +24,7 @@ class UpdateEstateMixin():
 
     def get_context_data(self, **kwargs):
         kwargs['update'] = self.update
+        kwargs['last10'] = ExpenseRecord.objects.all().order_by('-id')[:10]        
         return super(UpdateEstateMixin, self).get_context_data(**kwargs)
 
 

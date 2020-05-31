@@ -42,5 +42,39 @@
             </div>
         <!-- -->
         </div>
+        <div class="col-md-8">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Last 10 records</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if last10 %}
+                                {% for expense in last10 %}
+                                <tr>
+                                    <td>{{ expense.date|date:"d/m/Y"}}</td>
+                                    <td>{{ expense.category }}</td>
+                                    <td>{{ expense.amount }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        <tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock main-content %}
